@@ -6,9 +6,9 @@
 # blast_exe : Path to the blastn executable
 # bedtools : Path to bedtools executable
 #
-scripts_path: ''
-blast_exe: ''
-bedtools: '' 
+scripts_path: 'Path to the scripts dir'
+blast_exe: 'Path to the blast_exe'
+bedtools: 'Path to the bedtools exe' 
 
 ################################################################################
 ## Input options                                                             #
@@ -16,11 +16,15 @@ bedtools: ''
 # ref : Path to Reference fasta file
 # gff : GFF3 file corresponding to the reference
 # repeats : Path to the repeats fasta file
-# query: Path to the query fasta file which has no annotation
+# query: Path to the query fastas file which has no annotation. UPTO: 10 files allowed
+#
 
-ref: ''
-gff: ''
-repeats: ''
-query: ''
-outdir: ''
-logddir: ''
+ref: 'Path to the reference fasta file'
+gff: 'Path to the reference gff file'
+repeats: 'Path to the repeats file'
+outdir: 'Path to the outdir'
+logddir: 'Path to the logsdir'
+query:
+ - 'Path to query 1 fasta'
+ - 'Path to query 2 fasta'
+ - 'Path to query 3 fasta'
