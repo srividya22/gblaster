@@ -1,0 +1,26 @@
+---
+################################################################################
+## Tool options                                                             #
+#################################################################################
+# scripts_path: Path to the scripts folder of the gblaster package
+# blast_exe : Path to the blastn executable
+# bedtools : Path to bedtools executable
+#
+scripts_path: ''
+blast_exe: ''
+bedtools: '' 
+
+################################################################################
+## Input options                                                             #
+#################################################################################
+# ref : Path to Reference fasta file
+# gff : GFF3 file corresponding to the reference
+# repeats : Path to the repeats fasta file
+# query: Path to the query fasta file which has no annotation
+
+ref: ''
+gff: ''
+repeats: ''
+query: ''
+outdir: ''
+logddir: ''
