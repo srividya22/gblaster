@@ -11,6 +11,14 @@ blast_exe: 'Path to the blast_exe'
 bedtools: 'Path to the bedtools exe' 
 
 ################################################################################
+## Blast options                                                             #
+#################################################################################
+# cores: Compute cores for running blastn jobs in parallel
+# threads: Threads per core
+cores: 10
+threads: 4
+
+################################################################################
 ## Input options                                                             #
 #################################################################################
 # ref : Path to Reference fasta file
