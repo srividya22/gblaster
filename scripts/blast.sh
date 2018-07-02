@@ -28,11 +28,11 @@ sorted_file=${out_dir}/blast_sorted.txt
 echo "Blasting the Longest Isoforms  ${TIMESTAMP}"
 ${HOME}/miniconda2/bin/blastn -num_threads 80 -perc_identity ${P_IDTY} -filtering_db $3 -soft_masking true -lcase_masking -query ${qry_fasta} -db ${ref_db} -outfmt "6 qseqid qstart qend qlen length sseqid sstart send slen pident evalue bitscore" -out ${blast_file}
 
-awk '{if($3 > $2 ){print $0}else{ print $1"\t"$3"\t"$2"\t"$4"\t"$5"\t"$6"\t"$8"\t"$7"\t"$9"\t"$10"\t"$11"\t"$12}}' ${blast_file} | ${HOME}/bin/l-sort '-k1,1 -V -k2,2n -k6,6 -V -k7,7n -k5,5nr' - ${sorted_file}
+#awk '{if($3 > $2 ){print $0}else{ print $1"\t"$3"\t"$2"\t"$4"\t"$5"\t"$6"\t"$8"\t"$7"\t"$9"\t"$10"\t"$11"\t"$12}}' ${blast_file} | ${HOME}/bin/l-sort '-k1,1 -V -k2,2n -k6,6 -V -k7,7n -k5,5nr' - ${sorted_file}
 
-if [[ $(stat -c%s ${blast_file}) -ge $(stat -c%s ${sorted_file}) ]]; then
-   echo "Error : Sorting the blast alignments "
-   exit 1
-fi
+#if [[ $(stat -c%s ${blast_file}) -ge $(stat -c%s ${sorted_file}) ]]; then
+#   echo "Error : Sorting the blast alignments "
+#   exit 1
+#fi
 
 exit 0
