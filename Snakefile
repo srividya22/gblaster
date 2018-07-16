@@ -10,7 +10,7 @@ repeats = config['repeats']
 query = config['query'] 
 
 outdir = config['outdir']
-logs_dir = config['logs_dir']
+logs_dir = config['logsdir']
 
 scripts_path = config['scripts_path']
 blast_exe = config['blast_exe']
@@ -22,7 +22,8 @@ os.makedirs(logs_dir, exist_ok=True)
 exe=['blastn', 'bedtools']
 
 def exists(exe):
-    if not any(os.access(os.path.join(path, i), os.X_OK) for path in os.environ["PATH"].split(os.pathsep)):
+  for i in exe:   
+      if not any(os.access(os.path.join(path, i), os.X_OK) for path in os.environ["PATH"].split(os.pathsep)):
          print("{0} not found in path".format(i))
          sys.exit()
 
@@ -52,7 +53,7 @@ rule getLongestTranscripts:
 
 rule extractTranscripts:
     input:
-        ref = ref
+        ref = ref,
         bed = os.path.join(outdir, "longest_transcripts.bed")
     output:
         os.path.join(outdir, "longest_transcripts.fasta")
@@ -90,27 +91,28 @@ rule blast_queries:
         repeats= repeats,
         repDB= repeats + ".nhr"
     output:
-        expand("{out}/{fname}",out=outdir,fname=fname)
+        bd = expand("{out}/{fname}",out=outdir,fname=fnames),
+        bf = expand("{out}/{fname}/blast.txt",out=outdir,fname=fnames)
     log:
         expand("{logs}/{fname}_blast.log",logs= logs_dir,fname=fnames)
     shell:
-        "( {input.spath}/blast.sh {input.ref} {input.q} {input.repeats} {output} ) 2> {log}"
+        "( {input.spath}/blast.sh {input.ref} {input.q} {input.repeats} {output.bd} ) 2> {log}"
 
 rule counts_genes:
     input:
        spath=scripts_path,
-       f = expand("{out}/{fname}/blast.txt",out=outdir,fname=fname)
+       f = expand("{out}/{fname}/blast.txt",out=outdir,fname=fnames)
     output:
-       counts = expand("{out}/{fname}/counts.txt",out=outdir,fname=fname),
-       coords = expand("{out}/{fname}/coords.txt",out=outdir,fname=fname)
+       counts = expand("{out}/{fname}/counts.txt",out=outdir,fname=fnames),
+       coords = expand("{out}/{fname}/coords.txt",out=outdir,fname=fnames)
     shell:
        "( {input.spath}/create_counts.sh 0.95 {input.f} {output.counts} {output.coords} )"   
 
 rule report:
     input:
        spath=scripts_path,
-       counts = " ".join(expand("{out}/{fname}/counts.txt",out=outdir,fname=fname))
+       counts = " ".join(expand("{out}/{fname}/counts.txt",out=outdir,fname=fnames))
     output:
         os.path.join(outdir,"report.txt")
     shell:
-       "( {input.spath}/calculate_stats.sh {input.counts} > {output} ) 
+       "( {input.spath}/calculate_stats.sh {input.counts} > {output} )" 
