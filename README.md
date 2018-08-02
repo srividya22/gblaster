@@ -2,7 +2,7 @@
 Estimate Reference Gene Copy Numbers in a Draft Assembly.
 
 Pipeline Steps:  
-1. Identify the longest transcripts from SL3.0  
+1. Identify the longest transcripts from the reference genome.  
 2. Create blastdb for the query fasta files  
 3. Create blastdb for repeats  
 4. Run blastn queries of the longest transcripts against the references  
