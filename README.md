@@ -23,5 +23,5 @@ Estimate Reference Gene Copy Numbers in a Draft Assembly.
 
 ### Output:
 1. report.txt in the output filepath 
-#### Example output:
-https://github.com/srividya22/gblaster/blob/master/test/maize_comparison_stats.txt )
+### Example output:
+https://github.com/srividya22/gblaster/blob/master/test/maize_comparison_stats.txt 
