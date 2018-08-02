@@ -22,5 +22,6 @@ Estimate Reference Gene Copy Numbers in a Draft Assembly.
 3. Once you are done run ./submit_snakemake.sh
 
 ### Output:
-1. report.txt in the output filepath ( Check for example output in the
- test directory )
+1. report.txt in the output filepath 
+#### Example output:
+https://github.com/srividya22/gblaster/blob/master/test/maize_comparison_stats.txt )
