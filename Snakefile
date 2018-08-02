@@ -27,8 +27,11 @@ def exists(exe):
          print("{0} not found in path".format(i))
          sys.exit()
 
-def basename(file):
-    return "".join(file.split(".")[:-1])
+#def basename(file):
+#    return "".join(file.split(".")[:-1])
+
+def basename(file): 
+    return "".join(file.split("/")[-1].split(".")[:-1])
 
 fnames = list(map(basename,query))
 
