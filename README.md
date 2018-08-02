@@ -10,3 +10,14 @@ Pipeline Steps:
 6. Report gene counts and bed file of the transcripts aligned  
 7. Generate report  
 
+# Requirements:
+Install Miniconda following the steps the link : https://conda.io/docs/user-guide/install/linux.html.
+Install Snakemake using command : conda install -c bioconda -c conda-forge snakemake
+Install BLAST+ Suite : conda install -c bioconda blast
+Install bedtools : conda install -c bioconda bedtools
+
+# Installation:
+Clone github repository : git clone https://github.com/srividya22/gblaster.git ; cd gblaster
+Fill the config.yaml file with paths to the reference genome, query genomes , output directory , logs directory.
+Once you are done run ./submit_snakemake.sh
+Output:
