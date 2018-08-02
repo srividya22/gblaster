@@ -15,7 +15,7 @@ Estimate Reference Gene Copy Numbers in a Draft Assembly.
 2. Clone github repository : git clone https://github.com/srividya22/gblaster.git ; cd gblaster
 3. Run ./setup.sh
 
-### Steps to run the pipeline:
+### Run the pipeline:
 
 1. Fill the config.yaml file with paths to the reference genome, query genomes , output directory , logs directory.
 2. Once you are done run ./submit_snakemake.sh
